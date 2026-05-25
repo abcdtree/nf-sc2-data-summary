@@ -1,0 +1,25 @@
+title = "summary collapse config file"
+
+[QC]
+file = "example/QC.summary.csv"
+format = "csv"
+id = "SAMPLE_ID"
+columns = ["READS","COVERAGE","QC"]
+
+[nextclade]
+file = "example/nextclade.tsv"
+format = "tsv"
+id = "UNIQUE_ID"
+columns = ["lineage", "Overall_QC","completeness"]
+
+[no_colname]
+file = "example/no_colname.tsv"
+format = "noname"
+id = 0
+columns = [2, 3]
+colnames = ["Depth", "Coverage"]
+
+[Software_VERSION]
+file = "example/info.txt"
+format = "keyvalue"
+deli = ","
