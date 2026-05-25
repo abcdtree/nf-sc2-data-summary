@@ -1,0 +1,5 @@
+sample_id,READS,COVERAGE,QC,lineage,Overall_QC,completeness,Depth,Coverage,nextclade_version,pangolin,date
+SAMPLE1,1,90,PASS,XE.1.1,Good,90,230,90,1.1.0,2.1.4,2024-12-10
+SAMPLE2,2,91,PASS,PAA,Medicore,87,300,92,1.1.0,2.1.4,2024-12-10
+SAMPLE11,3,92,PASS,BA.2.3,Good,98,20,15,1.1.0,2.1.4,2024-12-10
+SAMPLE12,4,10,FAIL,DXX,Bad,10,150,99,1.1.0,2.1.4,2024-12-10

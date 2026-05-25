@@ -19,7 +19,7 @@ def read_components(info) -> pd.DataFrame:
         print(f"Could not find {path}, please check your config input")
         return pd.DataFrame()
     else:
-        mtype = info.get("type", "")
+        mtype = info.get("format", "")
         if len(mtype) == 0:
             print(
                 f"Could not decide file type of {path}, please check your config input"
@@ -31,11 +31,15 @@ def read_components(info) -> pd.DataFrame:
             elif mtype == "tsv":
                 df = pd.read_csv(path, sep="\t")
             id_col = info.get("id", "sample_id")
-            other_cols = info.get("column", [])
+            # print(id_col)
+            other_cols = info.get("columns", [])
+            # print(other_cols)
             try:
                 df_sub = df[[id_col] + other_cols]
-                df_sub.colnames = ["sample_id"] + other_cols
-                return df_sub.to_frame()
+                # print(df_sub)
+                df_sub = df_sub.rename(columns={id_col: "sample_id"})
+                # df_sub.colnames = ["sample_id"] + other_cols
+                return df_sub
             except:
                 print(
                     "Could not find all the columns from the config inputs, please check your input file and config"
@@ -72,11 +76,13 @@ def collapse_info(config, output="all_summary.csv"):
         else:
             value = config_data[key]
             df = read_components(value)
+            # print(df.head())
             if df.empty:
                 continue
             if df_merge.empty:
                 df_merge = df.copy()
-            elif "sample_id" in list(df_merge.columns):
+            elif "sample_id" in list(df.columns):
+                # print(df_merge)
                 df_merge = df_merge.merge(
                     df, on="sample_id", how="left"
                 ).drop_duplicates()
@@ -86,4 +92,6 @@ def collapse_info(config, output="all_summary.csv"):
 
 
 if __name__ == "__main__":
-    collapse_info("sample/config.toml")
+    collapse_info(
+        "example/config.toml", output="example/summary_name_can_be_change.csv"
+    )

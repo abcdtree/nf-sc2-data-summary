@@ -16,7 +16,7 @@ columns = ["lineage", "Overall_QC","completeness"]
 file = "example/no_colname.tsv"
 format = "noname"
 id = 0
-columns = [2, 3]
+columns = [1, 2]
 colnames = ["Depth", "Coverage"]
 
 [Software_VERSION]
