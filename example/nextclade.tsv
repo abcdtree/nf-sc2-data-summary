@@ -1,0 +1,5 @@
+UNIQUE_ID	lineage	completeness	Overall_QC	Noise	Others
+SAMPLE1	XE.1.1	90	Good	Others	Noise
+SAMPLE11	BA.2.3	98	Good	Not	Noise
+SAMPLE2	PAA	87	Medicore	Important	Noise
+SAMPLE12	DXX	10	Bad	Just	Noise
